@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+@using (Html.BeginForm("sendMail", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-horizontal col-lg-12">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="well well-sm">
+                            <form class="form-horizontal" method="post">
+                                <fieldset>
+                                    <legend class="text-center header"> Contactanos </legend>
+                                    <div class="form-group">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <input id="fname" name="name" type="text" placeholder="Nombre" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <input id="correo" name="correo" type="text" placeholder="Correo Electronico" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <input id="phone" name="phone" type="text" placeholder="Numero Telefonico" class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-10 col-md-offset-1">
+                                            <textarea class="form-control" id="message" name="message" placeholder="Digite su mensage" rows="7"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-12 text-center">
+                                            <button type="submit" class="btn btn-primary btn-lg">Enviar</button>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <div class="panel panel-default">
+                                <div class="text-center header">Officinas</div>
+                                <div class="panel-body text-center">
+                                    <h4>Dirección</h4>
+                                    <div>
+                                        Costado Oeste de<br />
+                                        Banco nacional<br />
+                                        Aguas Zarcas / San Carlos<br />
+                                        #(506) 1234 1234<br />
+                                        josepablosanchezsoto@gmail.com<br />
+                                    </div>
+                                    <hr />
+                                    <div id="map1" class="map" min-width 300px; min-height 300px; width 100%; height 100%;>
+                                        <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+                                        <script type="text/javascript">
+                                            jQuery(function ($) {
+                                                function init_map1() {
+                                                    var myLocation = new google.maps.LatLng(10.374910, -84.339895);
+                                                    var mapOptions = {
+                                                        center: myLocation,
+                                                        zoom: 16
+                                                    };
+                                                    var marker = new google.maps.Marker({
+                                                        position: myLocation,
+                                                        title: "Localizacion de la oficina"
+                                                    });
+                                                    var map = new google.maps.Map(document.getElementById("map1"),
+                                                        mapOptions);
+                                                    marker.setMap(map);
+                                                }
+                                                init_map1();
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
