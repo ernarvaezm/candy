@@ -125,12 +125,15 @@
                 }
                 $("#contador").text(50 - contToques)
                 if (movimiento2 > -1) {
+                    if (parseInt(movimiento1) - 1 == parseInt(movimiento2) || parseInt(movimiento1) + 1 == parseInt(movimiento2)
+                    || parseInt(movimiento1) - 9 == parseInt(movimiento2) || parseInt(movimiento1)+9 == parseInt(movimiento2)) {
+
                     $.ajax({
                         url: apiURL + "Partida/" + partida,
                         type: 'PUT',
                         data: { 'usuario': 0, 'movimiento1': movimiento1, 'movimiento2': movimiento2 },
                         success: function (data) {
-                         Paint(data);
+                        Paint(data);
                            console.log(data);
                             movimiento1 = -1;
                             movimiento2 = -1;
@@ -138,7 +141,13 @@
 
                         }
                     });
-
+                        } else {
+                           contToques = 0;
+                            movimiento1 = -1;
+                            movimiento2 = -1;
+                            alert("Movimiento incorrecto");
+                     
+                        }
 
                     //if (parseInt(movimiento1) - 1 == parseInt(movimiento2) || parseInt(movimiento1) + 1 == parseInt(movimiento2)
                     //|| parseInt(movimiento1) - 9 == parseInt(movimiento2) || parseInt(movimiento1)+9 == parseInt(movimiento2)) {
